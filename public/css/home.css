@@ -1,0 +1,717 @@
+.dg-banner-section {
+    position: relative;
+    height: 700px;
+    background-image: url('/images/banner_img.jpg');
+    background-size: cover;
+    background-position: center;
+    backdrop-filter: blur(4px);
+}
+
+.overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(37, 37, 37, 0.6);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    text-align: center;
+}
+
+.dg-banner-section .title {
+    font-family: Montserrat;
+    font-weight: 800;
+    font-size: 70px;
+    line-height: 80px;
+    letter-spacing: 0px;
+    text-align: center;
+    vertical-align: middle;
+
+}
+
+.dg-banner-section .subtitle {
+    font-family: Montserrat;
+    font-weight: 600;
+    font-size: 44px;
+    line-height: 80px;
+    letter-spacing: 0px;
+    text-align: center;
+    vertical-align: middle;
+    text-transform: uppercase;
+}
+
+
+
+.dg-brand-section {
+    background: rgba(247, 249, 237, 1);
+    padding: 25px 100px;
+}
+
+.brand-text {
+    font-family: Inter;
+    font-weight: 700;
+    font-size: 24px;
+    line-height: 100%;
+    letter-spacing: 0px;
+    text-align: justify;
+    vertical-align: middle;
+
+}
+
+.brand-description {
+    font-family: Inter;
+    font-weight: 500;
+    font-size: 24px;
+    line-height: 100%;
+    letter-spacing: 0px;
+    text-align: justify;
+    vertical-align: middle;
+}
+
+.logo-group {
+    width: 600px;
+    height: 170px;
+}
+
+.logo-item {
+    width: 25%;
+    height: 145px;
+    background: rgba(254, 254, 254, 1);
+
+}
+
+.logo-item.logo-main {
+    width: 40%;
+    height: 165px;
+    border-radius: 16px;
+    box-shadow: 0px 0px 9px 0px rgba(0, 0, 0, 0.3);
+    background: rgba(0, 69, 39, 1);
+}
+
+
+
+.dg-vision-mission {
+    padding: 25px 75px;
+    margin: 25px 0;
+}
+
+.info-box {
+    height: 162;
+    border-radius: 16px;
+    background: rgba(255, 255, 255, 1);
+    box-shadow: 0px 0px 8px 0px rgba(0, 0, 0, 0.15);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0 25px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+.info-box .icon {
+    width: 88px;
+    height: 88px;
+}
+
+.info-box .icon img {
+    width: 88px;
+    height: 88px;
+}
+
+.info-box .info-name {
+    font-family: Raleway;
+    font-weight: 700;
+    font-size: 44px;
+    line-height: 36px;
+    letter-spacing: 0%;
+    vertical-align: middle;
+    color: rgba(0, 69, 39, 1);
+    align-items: left;
+}
+
+.info-box .info-desc {
+    font-family: Inter;
+    font-weight: 500;
+    font-size: 24px;
+    line-height: 120%;
+    letter-spacing: 0%;
+    text-align: justify;
+    color: rgba(35, 31, 32, 1);
+}
+
+
+.dg-outstanding-section {
+    height: 1080px;
+    background: rgba(0, 69, 39, 1);
+    align-items: center;
+    justify-content: center;
+    display: flex;
+    padding: 0px 100px;
+}
+
+.dg-outstanding-section .outstanding-header {
+    font-family: Montserrat;
+    font-weight: 500;
+    font-size: 70px;
+    line-height: 80px;
+    letter-spacing: 0px;
+    text-align: center;
+    vertical-align: middle;
+    color: rgba(255, 255, 255, 1);
+    align-items: center;
+    justify-content: center;
+    display: flex;
+}
+
+.outstanding-header span {
+    font-family: Montserrat;
+    font-weight: 800;
+    font-size: 70px;
+    line-height: 80px;
+    letter-spacing: 0px;
+    text-align: center;
+    vertical-align: middle;
+    color: rgba(255, 255, 255, 1);
+    padding-left: 10px;
+}
+
+.outstanding-content {
+    margin-top: 25px;
+    align-items: center;
+    justify-content: center;
+    /* display: flex; */
+}
+
+.achievement-item {
+    align-items: center;
+    justify-content: center;
+    display: flex;
+    margin: 25px 0px;
+}
+
+.dg-outstanding-section .outstanding-content .achievement-number {
+    font-family: Bebas Neue;
+    font-weight: 400;
+    font-size: 80px;
+    /* leading-trim: Cap height; */
+    line-height: 120px;
+    letter-spacing: 0px;
+    text-align: center;
+    vertical-align: middle;
+    color: rgba(255, 237, 147, 1);
+}
+
+.dg-outstanding-section .outstanding-content .achievement-number sup {
+    font-family: Bebas Neue;
+    font-weight: 400;
+    font-size: 60px;
+    line-height: 120px;
+    letter-spacing: 0px;
+    text-align: center;
+    position: super;
+    color: rgba(255, 237, 147, 1);
+}
+
+.dg-outstanding-section .outstanding-content .achievement-text {
+    font-family: Inter;
+    font-weight: 500;
+    font-size: 36px;
+    line-height: 100%;
+    letter-spacing: 0px;
+    vertical-align: middle;
+    color: rgba(255, 255, 255, 1);
+}
+
+.dg-chain-section {
+    padding: 25px 75px;
+    align-items: center;
+
+}
+
+.dg-chain-section .chain-header {
+    font-family: Montserrat;
+    font-weight: 800;
+    font-size: 50px;
+    line-height: 62px;
+    letter-spacing: 0px;
+    text-align: center;
+    vertical-align: middle;
+    align-items: center;
+    padding: 25px 0;
+}
+
+
+.dg-chain-section .chain-content {
+    text-align: center;
+    align-items: center;
+}
+
+.accordion-horizontal {
+    display: flex;
+    overflow-x: auto;
+    gap: 0;
+    margin-top: 50px;
+}
+
+.accordion-item {
+    flex: 0 0 12.5%;
+    border-radius: 12px;
+    overflow: hidden;
+    transition: all 0.3s ease-in-out;
+    height: 620;
+}
+
+.accordion-item.active {
+    flex: 0 0 37.5%;
+    background-color: rgba(0, 69, 39, 1);
+    color: white;
+    width: 660;
+    border-radius: 16px;
+}
+
+.accordion-item.lovers.active {
+    flex: 0 0 37.5%;
+    background-color: rgba(22, 110, 58, 1);
+    color: white;
+    width: 660;
+    border-radius: 16px;
+}
+
+.accordion-item.auto-biomarkt.active {
+    flex: 0 0 37.5%;
+    background-color: rgba(70, 175, 78, 1);
+    color: white;
+    width: 660;
+    border-radius: 16px;
+}
+
+.accordion-header {
+    padding: 16px;
+    font-weight: bold;
+}
+
+.accordion-header .badge {
+    background-color: rgba(255, 255, 255, 1);
+    color: rgba(0, 69, 39, 1);
+    font-family: Montserrat;
+    font-weight: 700;
+    font-size: 12px;
+    line-height: 100%;
+    letter-spacing: 0%;
+    overflow: hidden;
+    max-width: 100%;
+    text-overflow: ellipsis;
+}
+
+.accordion-body {
+    display: flex;
+    padding: 24px;
+    display: none;
+}
+
+.accordion-item.active .accordion-body {
+    display: block;
+}
+
+.retail .accordion-img {
+    width: 100%;
+    border-radius: 8px;
+    margin-top: 12px;
+    height: 392px;
+    border-radius: 16px;
+    background-image: url('/images/danny#004527_biomarkt.jpg');
+    background-size: cover;
+    background-position: center;
+    justify-content: flex-start;
+    align-items: flex-end;
+    color: white;
+    text-align: left;
+    display: flex;
+}
+
+.lovers .accordion-img {
+    width: 100%;
+    border-radius: 8px;
+    margin-top: 12px;
+    height: 392px;
+    border-radius: 16px;
+    background-image: url('/images/danny#004527_lovers.jpg');
+    background-size: cover;
+    background-position: center;
+    justify-content: flex-start;
+    align-items: flex-end;
+    color: white;
+    text-align: left;
+    display: flex;
+}
+
+.auto-biomarkt .accordion-img {
+    width: 100%;
+    border-radius: 8px;
+    margin-top: 12px;
+    height: 392px;
+    border-radius: 16px;
+    background-image: url('/images/danny#004527_auto_biomarkt.jpg');
+    background-size: cover;
+    background-position: center;
+    justify-content: flex-start;
+    align-items: flex-end;
+    color: white;
+    text-align: left;
+    display: flex;
+}
+
+.text-position {
+    font-family: Montserrat;
+    font-weight: 600;
+    font-size: 16px;
+    line-height: 100%;
+    letter-spacing: 0px;
+    vertical-align: middle;
+    padding-left: 12px;
+}
+
+.accordion-item .accordion-title {
+    font-family: Montserrat;
+    font-weight: 700;
+    font-size: 20px;
+    line-height: 140%;
+    letter-spacing: 0%;
+    color: rgba(38, 50, 56, 1);
+}
+
+.accordion-item.active .accordion-title {
+    font-family: Montserrat;
+    font-weight: 700;
+    font-size: 32px;
+    line-height: 100%;
+    letter-spacing: 0%;
+    color: rgba(255, 255, 255, 1);
+}
+
+.accordion-subtitle {
+    font-size: 14px;
+}
+
+.accordion-item button {
+    background: none;
+    border: none;
+    text-align: left;
+    width: 100%;
+    color: inherit;
+}
+
+.green-line {
+    flex: 0 0 100%;
+    background-color: rgba(70, 175, 78, 1);
+    height: 8px;
+    margin-top: 50px;
+    margin-bottom: 50px;
+}
+
+
+.dg-growth-section {
+    padding: 0px 100px;
+}
+
+.dg-growth-section .header {
+    font-family: Montserrat;
+    font-weight: 800;
+    font-size: 80px;
+    line-height: 100px;
+    letter-spacing: 0px;
+    vertical-align: middle;
+}
+
+.dg-growth-section .header-img {
+    height: 20.74px;
+    width: 20.74px;
+    justify-content: flex-end;
+    text-align: right;
+    align-items: flex-end;
+}
+
+.dg-growth-section .grey-line {
+    background: rgba(217, 217, 217, 1);
+    flex: 0 0 100%;
+    height: 1px;
+    margin-top: 25px;
+    margin-bottom: 25px;
+}
+
+.dg-growth-section .growth-item {
+    justify-content: center;
+    display: flex;
+}
+
+.dg-growth-section .growth-item .growth-text {
+    font-family: Inter;
+    font-weight: 500;
+    font-size: 24px;
+    line-height: 40px;
+    letter-spacing: 0px;
+    text-align: left;
+    align-self: center;
+    justify-content: left;
+    display: flex;
+    color: rgba(153, 153, 153, 1);
+}
+
+.dg-growth-section .growth-item .growth-text strong {
+    font-family: Inter;
+    font-weight: 600;
+    font-size: 30px;
+    line-height: 40px;
+    letter-spacing: 0px;
+    text-align: justify;
+    vertical-align: middle;
+    color: rgba(109, 109, 109, 1);
+}
+
+.dg-growth-section .growth-item .growth-year {
+    font-family: Montserrat;
+    font-weight: 700;
+    font-size: 64px;
+    line-height: 100%;
+    letter-spacing: 0px;
+    text-align: right;
+    align-self: center;
+    justify-content: right;
+    display: flex;
+}
+
+.dash-list {
+    list-style-type: none;
+    padding-left: 1em;
+}
+
+.dash-list li::before {
+    content: "- ";
+    color: inherit;
+}
+
+.dg-growth-section .growth-item .growth-image {
+    flex: 0 0 100%;
+    height: 465px;
+    border-radius: 16px;
+    background-image: url('/images/bao_gia_nong_trang.jpg');
+    background-size: cover;
+    background-position: center;
+    margin-top: 12px;
+}
+
+.dg-farming-section {
+    margin: 20px 100px;
+    padding: 50px 20px;
+    flex: 0 0 100%;
+    border-radius: 36px;
+    background: linear-gradient(95.07deg, #46AF4E -6.95%, #004527 124.86%);
+    align-self: center;
+    justify-content: center;
+    display: flex;
+}
+
+.dg-farming-section .header-text {
+    font-family: Montserrat;
+    font-weight: 800;
+    font-size: 50px;
+    line-height: 100%;
+    letter-spacing: 0px;
+    vertical-align: middle;
+    color: rgba(255, 255, 255, 1);
+}
+
+.dg-farming-section .desc-text {
+    font-family: Montserrat;
+    font-weight: 500;
+    font-size: 18px;
+    line-height: 100%;
+    letter-spacing: 0px;
+    vertical-align: middle;
+    color: rgba(255, 255, 255, 1);
+    margin-top: 15px;
+}
+
+.dg-farming-section .farming-left {
+    justify-content: space-between;
+    align-items: center;
+    align-self: center;
+}
+
+.dg-farming-section .farming-right {
+    /* display: flex; */
+    justify-content: space-between;
+    align-items: center;
+    align-self: center;
+    text-align: center;
+
+}
+
+
+.dg-farming-section .certifi-item .certifi-image {
+    width: 100%;
+    border-radius: 16px;
+    background-size: cover;
+    background-position: center;
+}
+
+.dg-farming-section .certifi-item .certifi-name {
+    font-family: Montserrat;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 120%;
+    letter-spacing: 0%;
+    text-align: center;
+    color: rgba(255, 255, 255, 1);
+}
+
+
+.dg-advance-section {
+    margin: 20px 100px;
+    padding: 50px 20px;
+    flex: 0 0 100%;
+    border-radius: 36px;
+    background: rgba(255, 255, 255, 1);
+    box-shadow: 0px 2px 10px 0px rgba(0, 0, 0, 0.15);
+    align-self: center;
+    justify-content: center;
+    display: flex;
+}
+
+.dg-advance-section .header-text {
+    font-family: Montserrat;
+    font-weight: 800;
+    font-size: 50px;
+    line-height: 100%;
+    letter-spacing: 0px;
+    vertical-align: middle;
+    color: rgba(0, 69, 39, 1);
+}
+
+.dg-advance-section .desc-text {
+    font-family: Montserrat;
+    font-weight: 500;
+    font-size: 18px;
+    line-height: 100%;
+    letter-spacing: 0px;
+    vertical-align: middle;
+    color: rgba(35, 31, 32, 1);
+    margin-top: 15px;
+}
+
+.dg-advance-section .advance-left {
+    justify-content: space-between;
+    align-items: center;
+    align-self: center;
+}
+
+.dg-advance-section .advance-right {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    align-self: center;
+    text-align: center;
+}
+
+.dg-advance-section .advance-right .desc-text {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    align-self: center;
+    text-align: right;
+    text-overflow: display;
+}
+
+.dg-advance-section .certifi-item .certifi-name {
+    font-family: Montserrat;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 120%;
+    letter-spacing: 0%;
+    text-align: center;
+    color: rgba(35, 31, 32, 1);
+}
+
+
+.dg-certify-section {
+    margin: 20px 100px;
+    padding: 50px 20px;
+    flex: 0 0 100%;
+    border-radius: 36px;
+    background: rgba(255, 255, 255, 1);
+    box-shadow: 0px 2px 10px 0px rgba(0, 0, 0, 0.15);
+    align-self: center;
+    justify-content: center;
+    display: flex;
+}
+
+.dg-certify-section .header-text {
+    font-family: Montserrat;
+    font-weight: 800;
+    font-size: 50px;
+    line-height: 100%;
+    letter-spacing: 0px;
+    vertical-align: middle;
+    color: rgba(0, 69, 39, 1);
+}
+
+.dg-certify-section .desc-text {
+    font-family: Montserrat;
+    font-weight: 500;
+    font-size: 18px;
+    line-height: 100%;
+    letter-spacing: 0px;
+    vertical-align: middle;
+    color: rgba(35, 31, 32, 1);
+    margin-top: 15px;
+}
+
+.dg-certify-section .advance-left {
+    justify-content: space-between;
+    align-items: center;
+    align-self: center;
+}
+
+.dg-certify-section .advance-right {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    align-self: center;
+    text-align: center;
+}
+
+.dg-certify-section .certifi-item .certifi-name {
+    font-family: Montserrat;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 120%;
+    letter-spacing: 0%;
+    text-align: center;
+    color: rgba(35, 31, 32, 1);
+}
+
+
+.dg-news-section {
+    padding: 0px 100px;
+}
+
+.dg-news-section .header {
+    font-family: Montserrat;
+    font-weight: 800;
+    font-size: 80px;
+    line-height: 100px;
+    letter-spacing: 0px;
+    vertical-align: middle;
+    color: rgba(62, 184, 50, 1);
+}
+
+.dg-news-section .header-img {
+    height: 20.74px;
+    width: 20.74px;
+    justify-content: flex-end;
+    text-align: right;
+}

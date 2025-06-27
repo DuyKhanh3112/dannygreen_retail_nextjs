@@ -1,0 +1,123 @@
+import { createSlice, createAsyncThunk, PayloadAction } from '@reduxjs/toolkit'
+import { ICart } from '../../interfaces/cart'
+
+interface CartState {
+    data: ICart[] | null
+    loading: boolean
+    error: string | null,
+    page?: number,
+}
+
+
+export const initialStateAuth: CartState = {
+    data: null,
+    loading: false,
+    error: null,
+    page: 0
+}
+
+// createAsyncThunk để gọi API async
+export const getCarts = createAsyncThunk<ICart[], void, { rejectValue: string }>(
+    'carts/getCarts',
+    async (_, { rejectWithValue }) => {
+        try {
+            const res = await fetch('/api/cart', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({}),
+            });
+            const response = await res.json();
+            if (!response.success) {
+                return null;
+            }
+            return response.data.result as ICart[];
+        } catch (err) {
+            console.log(err)
+            return null;
+        }
+    }
+)
+
+export const addToCart = createAsyncThunk<boolean, { partner_id: number, product_id: number, add_qty: number, set_qty: number }, { rejectValue: string }>(
+    'carts/addCarts',
+    async ({ partner_id, product_id, add_qty, set_qty }, { rejectWithValue }) => {
+        try {
+            const res = await fetch('/api/cart/add', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({
+                    'partner_id': partner_id,
+                    'product_id': product_id,
+                    'add_qty': add_qty,
+                    'set_qty': set_qty,
+                }),
+            });
+            const response = await res.json();
+            if (!response.success) {
+                return true;
+            }
+            return true;
+        } catch (err) {
+            console.log(err)
+            return false;
+        }
+    }
+)
+
+const cartSlides = createSlice({
+    name: 'carts',
+    initialState: initialStateAuth,
+    reducers: {
+        setPage(state, action: PayloadAction<number>) {
+            state.page = action.payload
+        }
+    },
+    extraReducers: (builder) => {
+        builder
+            //get cart
+            .addCase(getCarts.pending, (state) => {
+                state.loading = true
+                state.error = null
+            })
+            .addCase(getCarts.fulfilled, (state, action) => {
+                state.loading = false
+
+                if (action.payload && action.payload.length > 0) {
+                    state.data = action.payload
+                    state.error = null
+                } else {
+                    state.data = []
+                    state.error = 'Không có dữ liệu sản phẩm'
+                }
+            })
+            .addCase(getCarts.rejected, (state, action) => {
+                state.loading = false
+                state.error = action.payload || 'Không có dữ liệu'
+                state.data = null
+            })
+
+            //add cart
+            .addCase(addToCart.pending, (state) => {
+                state.loading = true;
+                state.error = null;
+            })
+            .addCase(addToCart.fulfilled, (state, action) => {
+                state.loading = false;
+                if (!action.payload) {
+                    state.error = 'Thêm sản phẩm vào giỏ hàng thất bại';
+                } else {
+                    state.error = null;
+                }
+            })
+            .addCase(addToCart.rejected, (state, action) => {
+                state.loading = false;
+                state.error = action.payload || 'Lỗi khi thêm sản phẩm vào giỏ hàng';
+            })
+    },
+})
+
+export default cartSlides.reducer

@@ -1,0 +1,67 @@
+'use client'
+
+import { createContext, useContext } from "react";
+import { useAppDispatch, useAppSelector } from "../../lib/hook";
+import { IAuthData } from "../../interfaces/auth";
+import { useRouter } from "next/navigation";
+import { ICart } from "../../interfaces/cart";
+import { addToCart, getCarts } from "../../store/cart/cart_slide";
+
+type CartContextType = {
+    add_to_cart: (product_id: number, qty: number) => Promise<void>,
+    load_cart: () => Promise<void>
+}
+
+
+const CartContext = createContext<CartContextType | undefined>(undefined);
+
+export const useCartContext = (): CartContextType => {
+    const context = useContext(CartContext);
+    if (context === undefined) {
+        throw new Error('useCartContext must be used within a CartProvider');
+    }
+    return context;
+};
+
+interface CartProviderProps {
+    children: React.ReactNode;
+}
+
+export const CartProvider: React.FC<CartProviderProps> = ({ children }) => {
+    const carts = useAppSelector((state) => state.cart.data) as ICart[] | undefined;
+    const auth = useAppSelector((state) => state.auth.data) as IAuthData | undefined;
+    const dispatch = useAppDispatch();
+    const router = useRouter();
+
+    const load_cart = async () => {
+        await dispatch(getCarts());
+    }
+
+    const add_to_cart = async (product_id: number, qty: number) => {
+        if (auth) {
+            const line = carts.find((c) => c.product_id[0] == product_id) as ICart | undefined
+            // console.log(auth)
+            await dispatch(addToCart({
+                partner_id: auth?.partner_id ? auth?.partner_id : 0,
+                product_id: product_id,
+                add_qty: qty,
+                set_qty: line ? line.product_uom : 0
+            }))
+            await load_cart()
+        } else {
+            router.push('/login');
+        }
+    }
+
+    const value = {
+        add_to_cart,
+        load_cart,
+    };
+
+
+    return (
+        <CartContext.Provider value={value}>
+            {children}
+        </CartContext.Provider>
+    );
+};
