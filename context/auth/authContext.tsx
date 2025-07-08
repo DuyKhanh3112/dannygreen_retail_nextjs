@@ -1,12 +1,13 @@
 'use client'
 
-import { createContext, FormEvent, useContext, useState } from "react";
+import { createContext, FormEvent, useContext, useEffect, useState } from "react";
 import { useAppDispatch, useAppSelector } from "../../lib/hook";
 import { RootState } from "../../store";
 import { IAuthData } from "../../interfaces/auth";
 import { useRouter } from "next/navigation";
 import { loginUser, logoutUser, registerUser } from "../../store/auth/auth_slide";
 import { getCarts } from "../../store/cart/cart_slide";
+import LoadingPage from "../../components/loadingPage";
 
 type AuthContextType = {
     handleLogin: (e: FormEvent<HTMLFormElement>) => Promise<void>;
@@ -33,6 +34,7 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
     const auth = useAppSelector((state: RootState) => state.auth.data) as IAuthData | undefined
     const dispatch = useAppDispatch();
     const router = useRouter()
+    const [loading, setLoading] = useState(false)
 
     const handleRegister = async (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
@@ -60,23 +62,28 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
         router.push('/login')
     };
     const handleLogout = async () => {
+        setLoading(true)
         await dispatch(logoutUser({ sid: auth.session_id ?? '' }));
+        setLoading(false)
         router.push('/');
+
     }
 
     const handleLogin = async (e: FormEvent<HTMLFormElement>) => {
+        const [loading, setLoading] = useState(false)
+
         e.preventDefault();
         const form = e.currentTarget;
         const username = form.username.value;
         const password = form.password.value;
         const res = await dispatch(loginUser({ username: username, password: password }))
         if (res.payload != null) {
-            const cart = await dispatch(getCarts())
-            console.log(cart)
+            setLoading(true)
             router.push('/')
         } else {
             form.username.value = '';
             form.password.value = '';
+            setLoading(false)
             alert('Login fail !!!')
         }
     };
@@ -85,11 +92,20 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
         handleLogout,
         handleRegister
     };
+    const getDataCart = async () => {
+        setLoading(true)
+        const cart = await dispatch(getCarts({ partner_id: auth?.partner_id ?? 0 }))
+        setLoading(false)
+    }
+    useEffect(() => {
+        getDataCart()
+    }, [auth])
 
 
     return (
         <AuthContext.Provider value={value}>
-            {children}
+            {loading ? <LoadingPage /> : children}
+
         </AuthContext.Provider>
     );
 };

@@ -22,20 +22,7 @@ export default function ProductList() {
 
     return (
         <div className="container-fluid mx-auto p-5">
-            {/* <button onClick={async () => {
-                // const res = await dispatch(getProducts());
-                // console.log(res)
-                const res = await fetch('/api/products', {
-                    method: 'GET',
-                    headers: {
-                        'Content-Type': 'application/json',
-                    },
-                    // body: JSON.stringify({}),
-                });
-                const data = await res.json();
-                setData(data.data)
-            }}>aaaa</button>
-            <div dangerouslySetInnerHTML={{ __html: data }} /> */}
+
             <ul className="row">
                 {currentItems.map((product) => (
                     <ProductItem product={product} key={product.id} />

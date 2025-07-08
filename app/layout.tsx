@@ -34,6 +34,7 @@ export default function RootLayout({
                 <link rel='stylesheet' href='/css/home.css' />
                 <link rel='stylesheet' href='/css/card.css' />
                 <link rel='stylesheet' href='/css/chain.css' />
+                <link rel='stylesheet' href='/css/cart.css' />
                 <script src="/js/home.js"></script>
 
             </head>
