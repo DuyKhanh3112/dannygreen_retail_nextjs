@@ -22,7 +22,7 @@ export default function Header() {
     useEffect(() => {
         let count = 0;
         if (carts && auth) {
-            carts.order_line.map((item) => {
+            carts.order_line?.map((item) => {
                 count += item.product_uom_qty;
             })
         }

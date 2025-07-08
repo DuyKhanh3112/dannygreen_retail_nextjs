@@ -15,7 +15,13 @@ export default function PageProductDetail() {
         to_back
     } = useProductDetailContext();
 
-    const { add_to_cart, load_cart } = useCartContext();
+    const {
+        quantity,
+        changeQuantity,
+        change_cart,
+        add_to_cart,
+        load_cart,
+    } = useCartContext();
     return (
         <section>
             <div className="container-fluid px-5 py-4">
@@ -34,20 +40,30 @@ export default function PageProductDetail() {
                     <div className="col-8 px-5">
                         <h2>[{product.default_code}] {product?.name ?? ''}</h2>
                         <div className="py-2">
-                            <h3>Giá: <span>{formatCurrency(product.list_price)}</span></h3>
+                            <h3>Giá: <span>{formatCurrency(product.list_price)} / {product?.uom_id[1].toLowerCase()}</span></h3>
                         </div>
                         <div className="py-2">
                             <div className="input-group">
                                 <div className="input-group-prepend">
                                     <span className="input-group-text">Số lượng</span>
                                 </div>
-                                <input type="number" name="quantity" id="quantity" defaultValue={1} className="form-control col-3" />
+                                <input type="number" name="quantity" id="quantity"
+                                    value={quantity}
+                                    // defaultValue={quantity}
+                                    onChange={(event) => {
+                                        const value = Number(event.target.value);
+                                        // console.log(value)
+                                        changeQuantity(value);
+                                    }}
+                                    className="form-control col-3"
+
+                                />
                             </div>
                         </div>
                         <div className="row py-4">
                             <div className="col-4">
                                 <button className="col-12 btn btn-warning" onClick={async () => {
-                                    await add_to_cart(product?.id ?? 0, 1)
+                                    await add_to_cart(product?.id ?? 0)
                                 }}>
                                     <span className="fa fa-cart-plus"></span> Thêm giỏ hàng
                                 </button>

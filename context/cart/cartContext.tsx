@@ -10,7 +10,10 @@ import { IOrder } from "../../interfaces/order";
 import LoadingPage from "../../components/loadingPage";
 
 type CartContextType = {
-    add_to_cart: (product_id: number, qty: number) => Promise<void>,
+    quantity: number,
+    changeQuantity: (qty: number) => void,
+    change_cart: (product_id: number, qty: number) => Promise<void>,
+    add_to_cart: (product_id: number) => Promise<void>,
     load_cart: () => Promise<void>
 }
 
@@ -35,15 +38,43 @@ export const CartProvider: React.FC<CartProviderProps> = ({ children }) => {
     const dispatch = useAppDispatch();
     const router = useRouter();
     const [loading, setLoading] = useState(false)
+    const [quantity, setQuantity] = useState(1)
+
+    const changeQuantity = (qty: number) => {
+        if (qty > 1) {
+            setQuantity(qty);
+        } else {
+            setQuantity(1)
+        }
+    }
 
 
     const load_cart = async () => {
-        setLoading(true)
-        await dispatch(getCarts({ partner_id: auth.partner_id }));
-        setLoading(false)
+        if (auth) {
+            setLoading(true)
+            await dispatch(getCarts({ partner_id: auth.partner_id }));
+            setLoading(false)
+        }
     }
 
-    const add_to_cart = async (product_id: number, qty: number) => {
+    const add_to_cart = async (product_id: number) => {
+        if (auth) {
+            setLoading(true)
+            await dispatch(addToCart({
+                partner_id: auth?.partner_id ? auth?.partner_id : 0,
+                product_id: product_id,
+                add_qty: quantity,
+                order_id: carts?.id ?? 0
+            }))
+            await load_cart()
+            setQuantity(1)
+            setLoading(false)
+        } else {
+            router.push('/login');
+        }
+    }
+
+    const change_cart = async (product_id: number, qty: number) => {
         if (auth) {
             setLoading(true)
             await dispatch(addToCart({
@@ -53,6 +84,7 @@ export const CartProvider: React.FC<CartProviderProps> = ({ children }) => {
                 order_id: carts?.id ?? 0
             }))
             await load_cart()
+            setQuantity(1)
             setLoading(false)
         } else {
             router.push('/login');
@@ -60,6 +92,9 @@ export const CartProvider: React.FC<CartProviderProps> = ({ children }) => {
     }
 
     const value = {
+        quantity,
+        changeQuantity,
+        change_cart,
         add_to_cart,
         load_cart,
     };

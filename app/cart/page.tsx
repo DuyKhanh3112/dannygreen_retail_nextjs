@@ -4,12 +4,13 @@ import { useCartContext } from "../../context/cart/cartContext";
 import { IOrder } from "../../interfaces/order"
 import { IProduct } from "../../interfaces/product";
 import { useAppSelector } from "../../lib/hook"
+import { formatCurrency } from "../../utils/tool";
 
 export default function CartPage() {
     const carts = useAppSelector((state) => state.cart.data) as IOrder | undefined
     const products = useAppSelector((state) => state.product.data) as IProduct[] | undefined
     const { add_to_cart,
-        load_cart, } = useCartContext()
+        change_cart, } = useCartContext()
 
     return (
         <div className="container">
@@ -41,7 +42,7 @@ export default function CartPage() {
                         <CartItem key={item.id.toString()}
                             order_line={item}
                             product={productItem}
-                            updatecart={add_to_cart}
+                            updatecart={change_cart}
                         />
                     )
                 })
@@ -52,16 +53,14 @@ export default function CartPage() {
                     </div>
                     <div className="col-4 row text-center justify-content-between align-items-center">
                         <h2>Tổng: </h2>
-                        <h1>{carts.amount_total}</h1>
+                        <h1>{formatCurrency(carts.amount_total)}</h1>
                     </div>
                 </div>
                     <div className="container row my-5" >
                         <div className="col-8"></div>
                         <div className="col-4">
-                            <button className="col-12 btn btn-danger" onClick={async () => {
-                                await load_cart()
-                            }}>
-                                <span className="fa fa-shopping-cart"></span> Mua hàng
+                            <button className="col-12 btn btn-danger">
+                                <span className="fa fa-money"></span> Thanh toán
                             </button>
                         </div>
                     </div>

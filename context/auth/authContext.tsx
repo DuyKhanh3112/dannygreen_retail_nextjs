@@ -70,15 +70,14 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
     }
 
     const handleLogin = async (e: FormEvent<HTMLFormElement>) => {
-        const [loading, setLoading] = useState(false)
-
+        setLoading(true)
         e.preventDefault();
         const form = e.currentTarget;
         const username = form.username.value;
         const password = form.password.value;
         const res = await dispatch(loginUser({ username: username, password: password }))
         if (res.payload != null) {
-            setLoading(true)
+            setLoading(false)
             router.push('/')
         } else {
             form.username.value = '';
