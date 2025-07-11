@@ -38,8 +38,8 @@ export const ProductDetailProvider: React.FC<ProductDetailProviderProps> = ({ ch
 
 
     const all_product = useAppSelector((state) => state.product.data) as IProduct[];
-    const [product, setProduct] = useState<IProduct | undefined>(all_product.find((p) => p.default_code === defaut_code.toString()));
-    const imageSrc = product.image ? `data:image/png;base64,${product.image}` : '/images/logo_dannygreen_biomarkt.png';
+    const [product, setProduct] = useState<IProduct | undefined>(all_product?.find((p) => p.default_code === defaut_code.toString()));
+    const imageSrc = product?.image ? `data:image/png;base64,${product.image}` : '/images/logo_dannygreen_biomarkt.png';
 
     const add_to_cart = () => {
         if (auth) {

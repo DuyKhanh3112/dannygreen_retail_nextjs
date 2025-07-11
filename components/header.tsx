@@ -3,18 +3,32 @@ import { IAuthData } from "../interfaces/auth";
 import { useAppDispatch, useAppSelector } from "../lib/hook";
 import { logoutUser } from "../store/auth/auth_slide";
 import { ICart } from "../interfaces/cart";
+import { getCarts } from "../store/cart/cart_slide";
+import { IOrder } from "../interfaces/order";
+import { useEffect, useState } from "react";
 
 export default function Header() {
     const auth: IAuthData = useAppSelector((state) => state.auth.data);
-    const carts = useAppSelector((state) => state.cart.data) as ICart[] | undefined
+    const carts = useAppSelector((state) => state.cart.data) as IOrder | undefined
     const dispatch = useAppDispatch();
     const router = useRouter()
     const pathname = usePathname();
+    const [countCart, setCountCart] = useState(0)
 
     const handleLogout = async () => {
         await dispatch(logoutUser({ sid: auth.session_id ?? '' }));
         router.push('/');
     }
+    useEffect(() => {
+        let count = 0;
+        if (carts && auth) {
+            carts.order_line?.map((item) => {
+                count += item.product_uom_qty;
+            })
+        }
+        setCountCart(count)
+    }, [auth, carts])
+
 
     return (
         <div className="container-fluid header">
@@ -58,10 +72,16 @@ export default function Header() {
                     (
                         <li className="nav-item row">
                             <a className="nav-link" href="/cart">
+                                {/* <a className="nav-link" onClick={async () => {
+                                await getDataCart()
+                                console.log('done')
+                            }}> */}
+
                                 <div className="d-flex align-items-center">
 
                                     <i className="fa fa-shopping-cart" style={{ fontSize: 25 }}></i>
-                                    {(carts && carts.length > 0) && <sup style={{ fontSize: 16 }}>{carts.length}</sup>}
+                                    {countCart > 0 && <sup style={{ fontSize: 16 }}>{countCart}</sup>}
+                                    {/* {(carts && carts.length > 0) && <sup style={{ fontSize: 16 }}>{carts.length}</sup>} */}
 
                                 </div>
                             </a>

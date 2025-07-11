@@ -1,8 +1,9 @@
 import { createSlice, createAsyncThunk, PayloadAction } from '@reduxjs/toolkit'
 import { ICart } from '../../interfaces/cart'
+import { IOrder } from '../../interfaces/order'
 
 interface CartState {
-    data: ICart[] | null
+    data: IOrder | null
     loading: boolean
     error: string | null,
     page?: number,
@@ -17,22 +18,24 @@ export const initialStateAuth: CartState = {
 }
 
 // createAsyncThunk để gọi API async
-export const getCarts = createAsyncThunk<ICart[], void, { rejectValue: string }>(
+export const getCarts = createAsyncThunk<IOrder, { partner_id: number }, { rejectValue: string }>(
     'carts/getCarts',
-    async (_, { rejectWithValue }) => {
+    async ({ partner_id }, { rejectWithValue }) => {
         try {
             const res = await fetch('/api/cart', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
                 },
-                body: JSON.stringify({}),
+                body: JSON.stringify({
+                    'partner_id': partner_id
+                }),
             });
             const response = await res.json();
             if (!response.success) {
                 return null;
             }
-            return response.data.result as ICart[];
+            return response.data.result as IOrder;
         } catch (err) {
             console.log(err)
             return null;
@@ -40,9 +43,9 @@ export const getCarts = createAsyncThunk<ICart[], void, { rejectValue: string }>
     }
 )
 
-export const addToCart = createAsyncThunk<boolean, { partner_id: number, product_id: number, add_qty: number, set_qty: number }, { rejectValue: string }>(
+export const addToCart = createAsyncThunk<boolean, { partner_id: number, product_id: number, add_qty: number, order_id: number }, { rejectValue: string }>(
     'carts/addCarts',
-    async ({ partner_id, product_id, add_qty, set_qty }, { rejectWithValue }) => {
+    async ({ partner_id, product_id, add_qty, order_id }, { rejectWithValue }) => {
         try {
             const res = await fetch('/api/cart/add', {
                 method: 'POST',
@@ -53,7 +56,7 @@ export const addToCart = createAsyncThunk<boolean, { partner_id: number, product
                     'partner_id': partner_id,
                     'product_id': product_id,
                     'add_qty': add_qty,
-                    'set_qty': set_qty,
+                    'order_id': order_id,
                 }),
             });
             const response = await res.json();
@@ -86,11 +89,11 @@ const cartSlides = createSlice({
             .addCase(getCarts.fulfilled, (state, action) => {
                 state.loading = false
 
-                if (action.payload && action.payload.length > 0) {
+                if (action.payload) {
                     state.data = action.payload
                     state.error = null
                 } else {
-                    state.data = []
+                    state.data = null
                     state.error = 'Không có dữ liệu sản phẩm'
                 }
             })

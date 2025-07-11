@@ -10,7 +10,6 @@ const LoadingPage = () => {
             width: '100vw'
         }}>
             <BeatLoader />
-
         </div>
     );
 };

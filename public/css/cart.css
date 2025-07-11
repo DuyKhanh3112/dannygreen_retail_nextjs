@@ -1,0 +1,28 @@
+.cart-header {
+    font-size: 24px;
+    font-weight: bold;
+    padding-bottom: 20px;
+}
+
+.cart-header div {
+    justify-self: center;
+    align-self: center;
+    justify-content: center;
+    display: flex;
+
+}
+
+.cart-item {
+    background-color: white;
+    font-size: 18px;
+    margin-top: 50px;
+    margin-bottom: 50px;
+    border-radius: 25px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    box-shadow: 0 0 15px 5px lightgray;
+}
+
+.cart-item div {
+    align-self: center;
+}

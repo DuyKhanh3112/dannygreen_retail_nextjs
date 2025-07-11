@@ -4,6 +4,7 @@ export interface IProduct {
     name: string;
     list_price: number;
     image: string;
+    uom_id: [number, string];
 }
 
 
