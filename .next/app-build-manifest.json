@@ -25,25 +25,10 @@
       "static/chunks/main-app.js",
       "static/chunks/app/products/page.js"
     ],
-    "/chain/layout": [
+    "/_not-found/page": [
       "static/chunks/webpack.js",
       "static/chunks/main-app.js",
-      "static/chunks/app/chain/layout.js"
-    ],
-    "/chain/page": [
-      "static/chunks/webpack.js",
-      "static/chunks/main-app.js",
-      "static/chunks/app/chain/page.js"
-    ],
-    "/products/[slug]/layout": [
-      "static/chunks/webpack.js",
-      "static/chunks/main-app.js",
-      "static/chunks/app/products/[slug]/layout.js"
-    ],
-    "/products/[slug]/page": [
-      "static/chunks/webpack.js",
-      "static/chunks/main-app.js",
-      "static/chunks/app/products/[slug]/page.js"
+      "static/chunks/app/_not-found/page.js"
     ]
   }
 }
