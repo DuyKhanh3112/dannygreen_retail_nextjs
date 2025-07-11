@@ -10,7 +10,7 @@ export default function ProductItem({ product }: { product: IProduct }) {
                     <img src={imageSrc} className="card-img" />
                     <div className="card-body">
                         <h4 className="card-title">[{product.default_code}] {product.name}</h4>
-                        <h5 className="card-text">{formatCurrency(product.list_price)} / {product?.uom_id[1].toLowerCase()}</h5>
+                        <h5 className="card-text">{formatCurrency(product.list_price)} {product?.uom_id ? ` / ${product?.uom_id?.[1].toLowerCase()}` : ''}</h5>
                         {/* <a href="#" className="btn btn-primary">See Profile</a> */}
                     </div>
                 </a>

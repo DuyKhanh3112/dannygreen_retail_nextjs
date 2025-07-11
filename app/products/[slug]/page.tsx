@@ -29,7 +29,7 @@ export default function PageProductDetail() {
                     <button className="btn btn-primary" onClick={to_back}>
                         <span className="fa fa-caret-left"></span>
                     </button>
-                    <h2>[{product.default_code}] {product?.name ?? ''}</h2>
+                    <h2>[{product?.default_code}] {product?.name ?? ''}</h2>
                 </div>
             </div>
             <div className="container">
@@ -38,9 +38,9 @@ export default function PageProductDetail() {
                         <img src={imageSrc} width={'100%'} className="card-img" />
                     </div>
                     <div className="col-8 px-5">
-                        <h2>[{product.default_code}] {product?.name ?? ''}</h2>
+                        <h2>[{product?.default_code}] {product?.name ?? ''}</h2>
                         <div className="py-2">
-                            <h3>Giá: <span>{formatCurrency(product.list_price)} / {product?.uom_id[1].toLowerCase()}</span></h3>
+                            <h3>Giá: <span>{formatCurrency(product?.list_price)} / {product?.uom_id[1].toLowerCase()}</span></h3>
                         </div>
                         <div className="py-2">
                             <div className="input-group">

@@ -19,7 +19,7 @@ export default function CartItem({ order_line, product, updatecart }:
                     </div>
                 </a>
             </div>
-            <div className="col-2 text-center"> {formatCurrency(order_line.price_unit)} / {product?.uom_id[1].toLowerCase()}</div>
+            <div className="col-2 text-center"> {formatCurrency(order_line.price_unit)} / {product?.uom_id ? product?.uom_id?.[1].toLowerCase() : ''}</div>
             <div className="col-3 row text-center justify-content-between align-items-center">
                 <div className="col-2"></div>
                 <div className="col-8 row justify-content-between align-items-center">

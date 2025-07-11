@@ -5,6 +5,16 @@
       "static/chunks/main-app.js",
       "static/chunks/app/layout.js"
     ],
+    "/page": [
+      "static/chunks/webpack.js",
+      "static/chunks/main-app.js",
+      "static/chunks/app/page.js"
+    ],
+    "/api/products/route": [
+      "static/chunks/webpack.js",
+      "static/chunks/main-app.js",
+      "static/chunks/app/api/products/route.js"
+    ],
     "/products/layout": [
       "static/chunks/webpack.js",
       "static/chunks/main-app.js",
@@ -15,25 +25,15 @@
       "static/chunks/main-app.js",
       "static/chunks/app/products/page.js"
     ],
-    "/api/products/route": [
+    "/chain/layout": [
       "static/chunks/webpack.js",
       "static/chunks/main-app.js",
-      "static/chunks/app/api/products/route.js"
+      "static/chunks/app/chain/layout.js"
     ],
-    "/cart/layout": [
+    "/chain/page": [
       "static/chunks/webpack.js",
       "static/chunks/main-app.js",
-      "static/chunks/app/cart/layout.js"
-    ],
-    "/cart/page": [
-      "static/chunks/webpack.js",
-      "static/chunks/main-app.js",
-      "static/chunks/app/cart/page.js"
-    ],
-    "/page": [
-      "static/chunks/webpack.js",
-      "static/chunks/main-app.js",
-      "static/chunks/app/page.js"
+      "static/chunks/app/chain/page.js"
     ],
     "/products/[slug]/layout": [
       "static/chunks/webpack.js",
@@ -44,16 +44,6 @@
       "static/chunks/webpack.js",
       "static/chunks/main-app.js",
       "static/chunks/app/products/[slug]/page.js"
-    ],
-    "/api/cart/add/route": [
-      "static/chunks/webpack.js",
-      "static/chunks/main-app.js",
-      "static/chunks/app/api/cart/add/route.js"
-    ],
-    "/api/cart/route": [
-      "static/chunks/webpack.js",
-      "static/chunks/main-app.js",
-      "static/chunks/app/api/cart/route.js"
     ]
   }
 }
